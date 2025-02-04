@@ -5,7 +5,7 @@
  */
 package org.lwjgl.vulkan;
 
-import javax.annotation.*;
+import org.jspecify.annotations.*;
 
 import java.nio.*;
 
@@ -16,26 +16,12 @@ import static org.lwjgl.system.MemoryUtil.*;
 import static org.lwjgl.system.MemoryStack.*;
 
 /**
- * Structure describing fragment density map offset features that can be supported by an implementation.
- * 
- * <h5>Description</h5>
- * 
- * <p>If the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM} structure is included in the {@code pNext} chain of the {@link VkPhysicalDeviceFeatures2} structure passed to {@link VK11#vkGetPhysicalDeviceFeatures2 GetPhysicalDeviceFeatures2}, it is filled in to indicate whether each corresponding feature is supported. {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM} <b>can</b> also be used in the {@code pNext} chain of {@link VkDeviceCreateInfo} to selectively enable these features.</p>
- * 
- * <h5>Valid Usage (Implicit)</h5>
- * 
- * <ul>
- * <li>{@code sType} <b>must</b> be {@link QCOMFragmentDensityMapOffset#VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM}</li>
- * </ul>
- * 
- * <h3>Layout</h3>
- * 
- * <pre><code>
+ * <pre>{@code
  * struct VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
- *     VkStructureType {@link #sType};
- *     void * {@link #pNext};
+ *     VkStructureType sType;
+ *     void * pNext;
  *     VkBool32 fragmentDensityMapOffset;
- * }</code></pre>
+ * }}</pre>
  */
 public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM> implements NativeResource {
 
@@ -88,21 +74,21 @@ public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct
     @Override
     public int sizeof() { return SIZEOF; }
 
-    /** a {@code VkStructureType} value identifying this structure. */
+    /** @return the value of the {@code sType} field. */
     @NativeType("VkStructureType")
     public int sType() { return nsType(address()); }
-    /** {@code NULL} or a pointer to a structure extending this structure. */
+    /** @return the value of the {@code pNext} field. */
     @NativeType("void *")
     public long pNext() { return npNext(address()); }
     /** @return the value of the {@code fragmentDensityMapOffset} field. */
     @NativeType("VkBool32")
     public boolean fragmentDensityMapOffset() { return nfragmentDensityMapOffset(address()) != 0; }
 
-    /** Sets the specified value to the {@link #sType} field. */
+    /** Sets the specified value to the {@code sType} field. */
     public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM sType(@NativeType("VkStructureType") int value) { nsType(address(), value); return this; }
-    /** Sets the {@link QCOMFragmentDensityMapOffset#VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM} value to the {@link #sType} field. */
+    /** Sets the {@link QCOMFragmentDensityMapOffset#VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM} value to the {@code sType} field. */
     public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM sType$Default() { return sType(QCOMFragmentDensityMapOffset.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM); }
-    /** Sets the specified value to the {@link #pNext} field. */
+    /** Sets the specified value to the {@code pNext} field. */
     public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM pNext(@NativeType("void *") long value) { npNext(address(), value); return this; }
     /** Sets the specified value to the {@code fragmentDensityMapOffset} field. */
     public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM fragmentDensityMapOffset(@NativeType("VkBool32") boolean value) { nfragmentDensityMapOffset(address(), value ? 1 : 0); return this; }
@@ -156,8 +142,7 @@ public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
-    @Nullable
-    public static VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM createSafe(long address) {
+    public static @Nullable VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM createSafe(long address) {
         return address == NULL ? null : new VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(address, null);
     }
 
@@ -200,8 +185,7 @@ public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
-    @Nullable
-    public static VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.Buffer createSafe(long address, int capacity) {
+    public static VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.@Nullable Buffer createSafe(long address, int capacity) {
         return address == NULL ? null : new Buffer(address, capacity);
     }
 
@@ -246,18 +230,18 @@ public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct
     // -----------------------------------
 
     /** Unsafe version of {@link #sType}. */
-    public static int nsType(long struct) { return UNSAFE.getInt(null, struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.STYPE); }
+    public static int nsType(long struct) { return memGetInt(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.STYPE); }
     /** Unsafe version of {@link #pNext}. */
     public static long npNext(long struct) { return memGetAddress(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.PNEXT); }
     /** Unsafe version of {@link #fragmentDensityMapOffset}. */
-    public static int nfragmentDensityMapOffset(long struct) { return UNSAFE.getInt(null, struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.FRAGMENTDENSITYMAPOFFSET); }
+    public static int nfragmentDensityMapOffset(long struct) { return memGetInt(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.FRAGMENTDENSITYMAPOFFSET); }
 
     /** Unsafe version of {@link #sType(int) sType}. */
-    public static void nsType(long struct, int value) { UNSAFE.putInt(null, struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.STYPE, value); }
+    public static void nsType(long struct, int value) { memPutInt(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.STYPE, value); }
     /** Unsafe version of {@link #pNext(long) pNext}. */
     public static void npNext(long struct, long value) { memPutAddress(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.PNEXT, value); }
     /** Unsafe version of {@link #fragmentDensityMapOffset(boolean) fragmentDensityMapOffset}. */
-    public static void nfragmentDensityMapOffset(long struct, int value) { UNSAFE.putInt(null, struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.FRAGMENTDENSITYMAPOFFSET, value); }
+    public static void nfragmentDensityMapOffset(long struct, int value) { memPutInt(struct + VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.FRAGMENTDENSITYMAPOFFSET, value); }
 
     // -----------------------------------
 
@@ -293,25 +277,30 @@ public class VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM extends Struct
         }
 
         @Override
+        protected Buffer create(long address, @Nullable ByteBuffer container, int mark, int position, int limit, int capacity) {
+            return new Buffer(address, container, mark, position, limit, capacity);
+        }
+
+        @Override
         protected VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM getElementFactory() {
             return ELEMENT_FACTORY;
         }
 
-        /** @return the value of the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM#sType} field. */
+        /** @return the value of the {@code sType} field. */
         @NativeType("VkStructureType")
         public int sType() { return VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.nsType(address()); }
-        /** @return the value of the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM#pNext} field. */
+        /** @return the value of the {@code pNext} field. */
         @NativeType("void *")
         public long pNext() { return VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.npNext(address()); }
         /** @return the value of the {@code fragmentDensityMapOffset} field. */
         @NativeType("VkBool32")
         public boolean fragmentDensityMapOffset() { return VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.nfragmentDensityMapOffset(address()) != 0; }
 
-        /** Sets the specified value to the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM#sType} field. */
+        /** Sets the specified value to the {@code sType} field. */
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.Buffer sType(@NativeType("VkStructureType") int value) { VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.nsType(address(), value); return this; }
-        /** Sets the {@link QCOMFragmentDensityMapOffset#VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM} value to the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM#sType} field. */
+        /** Sets the {@link QCOMFragmentDensityMapOffset#VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM} value to the {@code sType} field. */
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.Buffer sType$Default() { return sType(QCOMFragmentDensityMapOffset.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM); }
-        /** Sets the specified value to the {@link VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM#pNext} field. */
+        /** Sets the specified value to the {@code pNext} field. */
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.Buffer pNext(@NativeType("void *") long value) { VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.npNext(address(), value); return this; }
         /** Sets the specified value to the {@code fragmentDensityMapOffset} field. */
         public VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.Buffer fragmentDensityMapOffset(@NativeType("VkBool32") boolean value) { VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM.nfragmentDensityMapOffset(address(), value ? 1 : 0); return this; }
